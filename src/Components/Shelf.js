@@ -1,6 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Book from './Book';
+import React from "react";
+import PropTypes from "prop-types";
+import Book from "./Book";
 
 const Shelf = ({ books, type, onTypeChanged }) => (
   <div className="bookshelf">
@@ -9,13 +9,7 @@ const Shelf = ({ books, type, onTypeChanged }) => (
       <ol className="books-grid">
         {books.map(book => (
           <li key={book.title}>
-            <Book
-              img={book.imgURL}
-              title={book.title}
-              author={book.author}
-              type={book.type}
-              handleTypeChange={onTypeChanged}
-            />
+            <Book bookInfo={book} handleTypeChange={onTypeChanged} />
           </li>
         ))}
       </ol>
@@ -23,16 +17,16 @@ const Shelf = ({ books, type, onTypeChanged }) => (
   </div>
 );
 
-Shelf.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      imgURL: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-      type: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  type: PropTypes.string.isRequired,
-  onTypeChanged: PropTypes.func.isRequired,
-};
+// Shelf.propTypes = {
+//   books: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       imgURL: PropTypes.string.isRequired,
+//       author: PropTypes.string.isRequired,
+//       type: PropTypes.string.isRequired,
+//     }),
+//   ).isRequired,
+//   type: PropTypes.string.isRequired,
+//   onTypeChanged: PropTypes.func.isRequired,
+// };
 
 export default Shelf;
