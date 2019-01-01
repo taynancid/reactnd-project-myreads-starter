@@ -1,7 +1,8 @@
 import React from "react";
-import "../App.css";
+import "./MainPage.css";
+import "../../App.css";
 import { Link } from "react-router-dom";
-import Shelf from "./Shelf";
+import Shelf from "../Shelf/Shelf";
 
 const MainPage = ({ books, onTypeChanged }) => {
   const currBooks = books.filter(book => book.shelf === "currentlyReading");

@@ -1,5 +1,6 @@
 /* eslint-disable react/no-typos */
 import React from "react";
+import "./Book.css";
 import PropTypes from "prop-types";
 
 const Book = ({ bookInfo, handleTypeChange }) => {
@@ -34,21 +35,14 @@ const Book = ({ bookInfo, handleTypeChange }) => {
         </div>
       </div>
       <div className="book-title">{bookInfo.title}</div>
-      <div className="book-authors">{bookInfo.author}</div>
+      <div className="book-authors">{bookInfo.authors}</div>
     </div>
   );
 };
 
-// Book.propTypes = {
-//   bookInfo: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       imgURL: PropTypes.string.isRequired,
-//       author: PropTypes.string.isRequired,
-//       title: PropTypes.string.isRequired,
-//       type: PropTypes.string.isRequired
-//     })
-//   ).isRequired,
-//   handleTypeChange: PropTypes.func.isRequired
-// };
+Book.propTypes = {
+  bookInfo: PropTypes.object.isRequired,
+  handleTypeChange: PropTypes.func.isRequired
+};
 
 export default Book;
