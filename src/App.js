@@ -38,7 +38,12 @@ class BooksApp extends Component {
         <Route
           exact
           path="/search"
-          render={() => <SearchPage onTypeChanged={this.onTypeChanged} />}
+          render={() => (
+            <SearchPage
+              taggedBooks={this.state.books}
+              onTypeChanged={this.onTypeChanged}
+            />
+          )}
         />
       </div>
     );

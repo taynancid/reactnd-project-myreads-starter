@@ -11,6 +11,7 @@ class SearchPage extends Component {
   };
 
   handleChange = e => {
+    const { taggedBooks } = this.props;
     e.preventDefault();
     search(e.target.value)
       .then(data => {
@@ -18,7 +19,11 @@ class SearchPage extends Component {
         if (data.error) {
           this.setState({ books: [] });
         } else {
-          this.setState({ books: data });
+          var bookList = data.map(
+            obj => taggedBooks.find(o => o.id === obj.id) || obj
+          );
+          //merge state coming from taggedbooks with untagged
+          this.setState({ books: bookList });
         }
       })
       .catch(e => {
@@ -27,6 +32,7 @@ class SearchPage extends Component {
   };
 
   render() {
+    const { onTypeChanged } = this.props;
     return (
       <div className="app">
         <div className="search-books">
@@ -47,10 +53,7 @@ class SearchPage extends Component {
               {this.state.books &&
                 this.state.books.map(book => (
                   <li key={book.id}>
-                    <Book
-                      bookInfo={book}
-                      handleTypeChange={this.props.onTypeChanged}
-                    />
+                    <Book bookInfo={book} handleTypeChange={onTypeChanged} />
                   </li>
                 ))}
             </ol>

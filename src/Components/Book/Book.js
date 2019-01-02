@@ -8,6 +8,8 @@ const Book = ({ bookInfo, handleTypeChange }) => {
     ? "https://upload.wikimedia.org/wikipedia/pt/e/ed/Shrek%28personagem%29.jpg"
     : bookInfo.imageLinks.thumbnail;
 
+  var bookShelf = !bookInfo.shelf ? "none" : bookInfo.shelf;
+
   return (
     <div className="book">
       <div className="book-top">
@@ -21,7 +23,7 @@ const Book = ({ bookInfo, handleTypeChange }) => {
         />
         <div className="book-shelf-changer">
           <select
-            value={bookInfo.shelf}
+            value={bookShelf}
             onChange={e => handleTypeChange(bookInfo, e.target.value)}
           >
             <option value="move" disabled>
